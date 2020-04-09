@@ -1,36 +1,28 @@
-body {
-  background-image: url("image1.jpeg");
-  height: 100px; 
-  background-position: center;
-  background-repeat: no-repeat; 
-  background-size: cover; 
+body  {
+    background-image: url("image1.jpeg");
+    height: 100px; 
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover; 
 }
-img {
-  float: left;
-  border: 1px dotted black;
-  margin: 0px 0px 10px 10px;
-}
-ul {
-  float:right;
-  margin:0 0px;
+ul
+{
+float:right;
+margin:0 0px;
 }
 .footer-nav {
-  float: left;
+    float: left;
   }
 .logo {
-  float: right;
+    float: right;
   } 
 .footer-nav ol {
-  display: inline;
+    display: inline;
   }
-div {
-  margin-top: -10px;
-  margin-bottom: 0px;
-  margin-right: 150px;
-  margin-left: 150px;
-}
-table, th, td {
-  align-content: center;
-  border: 1px solid black;
+div{
+    margin-top: -10px;
+    margin-bottom: 0px;
+    margin-right: 150px;
+    margin-left: 150px;
 }
   
