@@ -9,6 +9,7 @@ img{
 .center {
     text-align: center;
     align-content: center;
+    size: 50px;
 }
 ul#menu li {
   display:inline;
@@ -96,7 +97,7 @@ button  {
     display: inline-block;
     margin: 5px; /* space between buttons */
     background: #6fb958; /* background color */
-    color: #333;
+    color: rgb(10, 10, 10);
     border-radius: 50%; /* rounded corners */
     padding: 100px 60px;
 }
@@ -113,5 +114,21 @@ button  {
     color: white;
     text-align: center;
  }
+ .column {
+    float: right;
+    width: 40%;
+    padding: 10px;
+    height: 300px;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+@media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+    }
+  }
 
   
