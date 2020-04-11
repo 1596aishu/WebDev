@@ -1,3 +1,10 @@
+/* $font-stack:    Helvetica, sans-serif;
+$primary-color: #333; */
+
+body {
+  font: Helvetica, sans-serif;
+  color: #333;
+}
 input[type=text], select, textarea {
     width: 100%;
     padding: 12px;
@@ -94,5 +101,14 @@ li a:hover {
       width: 100%;
     }
   }
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(62, 177, 87);
+    color: white;
+    text-align: center;
+ }
 
   
