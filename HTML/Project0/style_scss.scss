@@ -1,0 +1,18 @@
+$bcolor :rgb(245, 238, 238);
+$font : 10px;
+
+body{
+    background-color: $bcolor;
+    font-size: $font;
+}
+
+%table, th, td{
+    font-family: sans-serif;
+    font-weight: bold;
+    margin: auto;
+}
+
+.td{
+    @extend %table;
+    background-color: wheat;
+}

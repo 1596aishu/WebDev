@@ -1,0 +1,15 @@
+body {
+  background-color: #f5eeee;
+  font-size: 10px;
+}
+
+.td, th, td {
+  font-family: sans-serif;
+  font-weight: bold;
+  margin: auto;
+}
+
+.td {
+  background-color: wheat;
+}
+/*# sourceMappingURL=style_scss.css.map */
