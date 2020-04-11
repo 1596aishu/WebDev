@@ -101,7 +101,7 @@ li a:hover {
       width: 100%;
     }
   }
-  .footer {
+.footer {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -110,5 +110,12 @@ li a:hover {
     color: white;
     text-align: center;
  }
+ .col-sm-6 {
+  display: inline-block;
+  margin: 15px; /* space between buttons */
+  color: white;
+  font-weight: bold;
+  font-size: large;
+}
 
   
