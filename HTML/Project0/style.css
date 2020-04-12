@@ -1,6 +1,6 @@
 body{
     
-    background-image: url('https://1596aishu.github.io/WebDev/HTML/Project0/bgimage.jpg');  
+    background-image: url('https://1596aishu.github.io/WebDev/HTML/Project0/bgimage.jpeg');  
     background-size: cover;
     
 }
@@ -24,9 +24,7 @@ ul {
     overflow: hidden;
 }
   
-li {
-    float: left;
-}
+
   
 li a {
     display: block;
@@ -98,14 +96,16 @@ button  {
 } */
 .my-button {
     display: inline-block;
+    background-image: url('bgimage3.jpeg');
     margin: 10px; /* space between buttons */
     background: #313331; /* background color */
     color: rgb(240, 234, 234);
-    padding: 50px 40px;
+    padding: 100px 60px;
 }
 .my-button:hover {
     background: #666;
     color: #c1e1e0;
+    /* background-image: url('bgimage3.jpeg'); */
 }
 .footer {
     position: fixed;
@@ -117,8 +117,8 @@ button  {
     text-align: center;
  }
  .column {
-    float: right;
-    width: 40%;
+    float: left;
+    width: 45%;
     padding: 10px;
     height: 300px;
 }
