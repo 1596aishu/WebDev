@@ -85,7 +85,8 @@ ol {
     width: 40%;
     padding: 10px;
     height: 270px;
-    color: #ddd;
+    color: rgb(10, 9, 9);
+    font-size: large;
 }
 .row:after {
     content: "";
