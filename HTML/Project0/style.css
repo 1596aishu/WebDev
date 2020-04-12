@@ -99,7 +99,7 @@ button  {
 .my-button {
     display: inline-block;
     margin: 10px; /* space between buttons */
-    background: #0d180a; /* background color */
+    background: #313331; /* background color */
     color: rgb(240, 234, 234);
     padding: 50px 40px;
 }
@@ -112,7 +112,7 @@ button  {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: rgb(62, 177, 87);
+    background-color: rgb(177, 104, 62);
     color: white;
     text-align: center;
  }
