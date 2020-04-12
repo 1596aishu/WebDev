@@ -1,5 +1,8 @@
 body{
-    background-color: rgb(203, 238, 221);
+    
+    background-image: url('bgimage.jpg');  
+    background-size: cover;
+    
 }
 img{
     border-radius: 50%;
@@ -52,7 +55,7 @@ li {
 
 
 .active {
-    background-color: #4CAF50;
+    background-color: rgb(175, 120, 76);
 }
   
 li a {
@@ -95,11 +98,10 @@ button  {
 } */
 .my-button {
     display: inline-block;
-    margin: 5px; /* space between buttons */
-    background: #6fb958; /* background color */
-    color: rgb(10, 10, 10);
-    border-radius: 50%; /* rounded corners */
-    padding: 100px 60px;
+    margin: 10px; /* space between buttons */
+    background: #0d180a; /* background color */
+    color: rgb(240, 234, 234);
+    padding: 50px 40px;
 }
 .my-button:hover {
     background: #666;
