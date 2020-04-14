@@ -17,16 +17,9 @@ img{
 ul#menu li {
   display:inline;
 }
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-  
+
 li a {
     display: block;
-    padding: 8px;
     background-color:#333;
     color: #f2f2f2;
     text-align: center;
@@ -54,13 +47,7 @@ li {
     background-color: rgb(175, 120, 76);
 }
   
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 15px 15px;
-    text-decoration: none;
-}
+
   
 li a:hover {
     background-color: #ddd;
