@@ -1,6 +1,6 @@
-import os
+import os, sys
 
-from flask import Flask, session, render_template
+from flask import Flask, session, render_template, request
 
 from flask_session import Session
 from sqlalchemy import create_engine
@@ -29,4 +29,9 @@ def index():
 
 @app.route("/register", methods=["GET","POST"])
 def respond():
-    return render_template("registration.html")
+    if request.method == "POST":
+        username = request.form.get("username")
+        print(username, file = sys.stdout)
+        return render_template("registration.html", headline= username+" Successfully registered")
+    elif request.method == "GET":
+        return render_template("registration.html", headline = "")
