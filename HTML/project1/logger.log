@@ -345,3 +345,20 @@ INFO:werkzeug: * Detected change in 'C:\\Users\\aishwarya\\Desktop\\git\\WebDev\
 INFO:werkzeug: * Restarting with stat
 DEBUG:root:database sessions created
 INFO:werkzeug:127.0.0.1 - - [18/Apr/2020 18:56:15] "GET /register HTTP/1.1" 200 -
+DEBUG:root:database sessions created
+DEBUG:root:database sessions created
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2020 18:56:32] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2020 18:56:54] "POST /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2020 18:57:10] "POST /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2020 18:57:17] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2020 18:57:25] "GET /admin HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2020 18:58:23] "POST /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2020 18:58:35] "POST /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2020 18:58:45] "POST /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2020 18:58:51] "GET /admin HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\aishwarya\\Desktop\\git\\WebDev\\HTML\\project1\\application.py', reloading
+INFO:werkzeug: * Restarting with stat
+DEBUG:root:database sessions created
+INFO:werkzeug: * Detected change in 'C:\\Users\\aishwarya\\Desktop\\git\\WebDev\\HTML\\project1\\models.py', reloading
+INFO:werkzeug: * Restarting with stat
+DEBUG:root:database sessions created
