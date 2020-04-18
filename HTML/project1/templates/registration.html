@@ -39,9 +39,8 @@ input[type=text]:focus, input[type=password]:focus {
 </style>
 <body>
     
-
 </br>
-<form action="{{url_for('respond')}}" method="POST">
+<form action="{{url_for('response')}}" method="POST">
     <div class="container">
         <h1>REGISTRATION PAGE</h1> 
         <hr>
@@ -49,7 +48,7 @@ input[type=text]:focus, input[type=password]:focus {
         <label for="username">USERNAME:</label>
         <input type="text" name="username" placeholder="Your username.." required>
     </br>
-        <label for="lname">PASSWORD:</label>
+        <label for="password">PASSWORD:</label>
         <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" -->
         <input type="password" name="password" placeholder="Your password.." minlength = "8" required>
     </br>

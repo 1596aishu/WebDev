@@ -1,6 +1,7 @@
 import os, sys, logging, time
 import calendar
 import time
+
 from flask import Flask, render_template, request, session, redirect, url_for
 from flask_session import Session
 from sqlalchemy import create_engine, or_
@@ -20,10 +21,14 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
+logging.basicConfig(filename='logger.log',level=logging.DEBUG)
 # Set up database
 engine = create_engine(os.getenv("DATABASE_URL"))
 db_session = scoped_session(sessionmaker(bind=engine))
 db.query = db_session.query_property()
+logging.debug("database sessions created")
+
+
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
@@ -39,29 +44,31 @@ def index():
 @app.route("/register", methods=["GET","POST"])
 def response():
     if request.method == "POST":
-        user = request.form.get("username")
+        username = request.form.get("username")
         #print(id, file=sys.stdout)
-        pwd = request.form.get("password")
-        ch = USER.query.filter_by(username=user).first()
+        password = request.form.get("password")
+        ch = USER.query.filter_by(username=username).first()
         if ch is not None:
-            return render_template("register.html", headline=user+" Registered already. Login.")
-        info = USER(username=user,password=pwd)
+            return render_template("registration.html", headline=username+" Registered already. Login.")
+        info = USER(username=username,password=password,timestamp=calendar.timegm(time.gmtime()))
         db.session.add(info)
         db.session.commit()
-        if len(user) == 0:
-            user += "Please enter the details"
+        if len(username) == 0:
+            username += "Please enter the details"
         else:
-            user += " Registered. Please login."
-        return render_template("register.html",headline=user)
+            username += " Registered. Please login."
+        return render_template("registration.html",headline=username)
     elif request.method == "GET":
-        return render_template("register.html",headline="")
+        return render_template("registration.html",headline="")
 
 @app.route("/admin")
 def database():
     users = USER.query.order_by(USER.timestamp).all()
     username = []
     password = []
+    stamps = []
     for i in users:
         username.append(i.username)
         password.append(i.password)
-    return render_template("database.html", username=username,password=password,length=len(username))
+        stamps.append(time.ctime(i.timestamp))
+    return render_template("database.html", username=username,password=password,stamps=stamps,length=len(username))
