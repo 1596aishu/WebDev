@@ -54,7 +54,7 @@ def response():
         db.session.add(info)
         db.session.commit()
         if len(username) == 0:
-            username += "Please enter the details"
+            username += " Please enter the details"
         else:
             username += " Registered. Please login."
         return render_template("registration.html",headline=username)
