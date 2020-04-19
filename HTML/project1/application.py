@@ -1,7 +1,7 @@
 import os, sys, logging, time
 import calendar
 import time
-
+from flask_login import LoginManager, login_user , logout_user , current_user , login_required
 from flask import Flask, render_template, request, session, redirect, url_for
 from flask_session import Session
 from sqlalchemy import create_engine, or_
@@ -42,6 +42,12 @@ def index():
     return "Project 1: TODO"
 
 @app.route("/register", methods=["GET","POST"])
+def logout():
+    return render_template("registration.html",headline="")
+    
+
+
+@app.route("/register", methods=["GET","POST"])
 def response():
     if request.method == "POST":
         username = request.form.get("username")
@@ -60,6 +66,21 @@ def response():
         return render_template("registration.html",headline=username)
     elif request.method == "GET":
         return render_template("registration.html",headline="")
+
+@app.route("/auth", methods=["GET","POST"])
+def authentication():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        query = USER.query.filter(USER.username.in_([username]), USER.password.in_([password]) )
+        result = query.first()
+        if result:
+            return render_template("index.html", headline=" welcome "+username)
+        else:
+            return render_template("registration.html", headline="WRONG CREDENTIALS")
+    elif request.method == 'GET':
+        return render_template("index.html",headline=username)
+
 
 @app.route("/admin")
 def database():
