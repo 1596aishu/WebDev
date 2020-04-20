@@ -19,32 +19,30 @@ if not os.getenv("DATABASE_URL"):
 # Configure session to use filesystem
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
-Session(app)
-
-logging.basicConfig(filename='logger.log',level=logging.DEBUG)
-# Set up database
-engine = create_engine(os.getenv("DATABASE_URL"))
-db_session = scoped_session(sessionmaker(bind=engine))
-db.query = db_session.query_property()
-logging.debug("database sessions created")
-
-
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+Session(app)
 db.init_app(app)
 
-def init_db():
-    db.metadata.create_all(bind=engine)
-init_db()
+
+# Set up database
+engine = create_engine(os.getenv("DATABASE_URL"))
+db = scoped_session(sessionmaker(bind=engine))
+sess = db()
+
+# app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
+# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+# db.init_app(app)
+
+# def init_db():
+#     db.metadata.create_all(bind=engine)
+# init_db()
 
 @app.route("/")
 def index():
-    return "Project 1: TODO"
-
-@app.route("/register", methods=["GET","POST"])
-def logout():
-    return render_template("registration.html",headline="")
-    
+    if request.method == "GET":
+        if session.get("username") is not None:
+            return render_template("index.html", headline= session["username"])
+        return render_template("registration.html",headline="")
 
 
 @app.route("/register", methods=["GET","POST"])
@@ -53,34 +51,34 @@ def response():
         username = request.form.get("username")
         #print(id, file=sys.stdout)
         password = request.form.get("password")
-        ch = USER.query.filter_by(username=username).first()
-        if ch is not None:
-            return render_template("registration.html", headline=username+" Registered already. Login.")
+        # ch = USER.query.filter_by(username=username).first()
+        # if ch is not None:
+        #     return render_template("registration.html", headline=username+" Registered already. Login.")
         info = USER(username=username,password=password,timestamp=calendar.timegm(time.gmtime()))
-        db.session.add(info)
-        db.session.commit()
-        if len(username) == 0:
-            username += " Please enter the details"
-        else:
-            username += " Registered. Please login."
-        return render_template("registration.html",headline=username)
+        try:
+            sess.add(info)
+            sess.commit()
+            username += " registered. Please login."
+            return render_template("registration.html",headline=username)
+        except:
+            text ="Account already exists!please try again with new account or login"
+            return render_template("registration.html",headline=text)
     elif request.method == "GET":
         return render_template("registration.html",headline="")
 
 @app.route("/auth", methods=["GET","POST"])
 def authentication():
-    if request.method == 'POST':
+    if request.method == "POST":
         username = request.form['username']
         password = request.form['password']
         query = USER.query.filter(USER.username.in_([username]), USER.password.in_([password]) )
-        result = query.first()
-        if result:
-            return render_template("index.html", headline=" welcome "+username)
-        else:
-            return render_template("registration.html", headline="WRONG CREDENTIALS")
-    elif request.method == 'GET':
-        return render_template("index.html",headline=username)
-
+        # result = query.first()
+        if query:
+            session["username"] = username
+            return render_template("index.html", headline=" welcome "+session["username"])
+        return render_template("registration.html", headline="WRONG CREDENTIALS")
+    elif request.method == "GET":
+        return redirect("register")
 
 @app.route("/admin")
 def database():
@@ -93,3 +91,11 @@ def database():
         password.append(i.password)
         stamps.append(time.ctime(i.timestamp))
     return render_template("database.html", username=username,password=password,stamps=stamps,length=len(username))
+
+
+
+@app.route("/logout", methods=["GET","POST"])
+def logout():
+    session.clear()
+    return redirect("/")
+    
