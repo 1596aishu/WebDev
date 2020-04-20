@@ -79,7 +79,7 @@ def authentication():
         else:
             return render_template("registration.html", headline="WRONG CREDENTIALS")
     elif request.method == 'GET':
-        return render_template("index.html",headline=username)
+        return render_template("registration.html",headline="")
 
 
 @app.route("/admin")

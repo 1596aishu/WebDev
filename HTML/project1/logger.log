@@ -813,3 +813,34 @@ INFO:werkzeug:127.0.0.1 - - [19/Apr/2020 15:33:52] "POST /auth HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [19/Apr/2020 15:33:54] "POST /register HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [19/Apr/2020 15:34:09] "POST /auth HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [19/Apr/2020 15:34:13] "POST /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2020 15:43:21] "GET /auth HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2020 15:43:21] "GET /auth?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2020 15:43:21] "GET /auth?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2020 15:43:21] "GET /auth?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2020 15:43:22] "GET /auth?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2020 15:43:22] "GET /auth?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2020 15:43:22] "GET /admin HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2020 15:43:22] "GET /auth?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\aishwarya\\Desktop\\git\\WebDev\\HTML\\project1\\application.py', reloading
+INFO:werkzeug: * Restarting with stat
+DEBUG:root:database sessions created
+INFO:werkzeug: * Detected change in 'C:\\Users\\aishwarya\\Desktop\\git\\WebDev\\HTML\\project1\\application.py', reloading
+INFO:werkzeug: * Restarting with stat
+DEBUG:root:database sessions created
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2020 15:44:35] "GET /auth HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2020 15:44:35] "GET /auth?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2020 15:44:35] "GET /auth?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2020 15:44:35] "GET /auth?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2020 15:44:35] "GET /auth?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2020 15:44:35] "GET /auth?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\aishwarya\\Desktop\\git\\WebDev\\HTML\\project1\\application.py', reloading
+INFO:werkzeug: * Restarting with stat
+DEBUG:root:database sessions created
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2020 15:45:04] "GET /auth HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\aishwarya\\Desktop\\git\\WebDev\\HTML\\project1\\models.py', reloading
+INFO:werkzeug: * Restarting with stat
+DEBUG:root:database sessions created
+DEBUG:root:database sessions created
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2020 10:29:04] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2020 10:29:19] "POST /auth HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2020 10:29:21] "POST /register HTTP/1.1" 200 -
