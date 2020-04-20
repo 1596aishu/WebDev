@@ -14,3 +14,17 @@ class USER(db.Model):
       self.timestamp = timestamp
    def __repr__(self):
       return '<User %r>' % (self.username)
+
+class Book(db.Model):
+   __tablename__ = 'Book'
+   isbn = Column(String(50), primary_key=True)
+   bname = Column(String(50))  
+   author = Column(String(50)) 
+   year = Column(String(50))
+   def __init__(self, isbn, bname, author, year):
+      self.isbn = isbn
+      self.bname = bname
+      self.author = author
+      self.year = year
+   def __repr__(self):
+      return '<Book %r>' % (self.isbn)
