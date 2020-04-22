@@ -1,3 +1,4 @@
+
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, String, Integer
 from sqlalchemy.ext.declarative import declarative_base
@@ -30,3 +31,4 @@ class BOOK(Base):
       self.year = year
    def __repr__(self):
       return '<BOOK %r>' % (self.isbn)
+
