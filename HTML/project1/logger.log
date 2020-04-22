@@ -914,3 +914,4 @@ DEBUG:root:database sessions created
 INFO:werkzeug:127.0.0.1 - - [20/Apr/2020 14:21:49] "GET /register HTTP/1.1" 200 -
 INFO:werkzeug: * Detected change in 'C:\\Users\\aishwarya\\Desktop\\git\\WebDev\\HTML\\project1\\application.py', reloading
 INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat

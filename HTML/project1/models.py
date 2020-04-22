@@ -1,10 +1,12 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, String, Integer
+from sqlalchemy.ext.declarative import declarative_base
 
-db = SQLAlchemy()
+# db = SQLAlchemy()
+Base = declarative_base()
 
-class USER(db.Model):
-   __tablename__ = 'USER'
+class USER(Base):
+   __tablename__ = 'user'
    username = Column(String(50), primary_key=True)
    password = Column(String(50))  
    timestamp = Column(Integer, nullable=False) 
@@ -13,10 +15,10 @@ class USER(db.Model):
       self.password = password
       self.timestamp = timestamp
    def __repr__(self):
-      return '<User %r>' % (self.username)
+      return '<USER %r>' % (self.username)
 
-class Book(db.Model):
-   __tablename__ = 'Book'
+class BOOK(Base):
+   __tablename__ = 'book'
    isbn = Column(String(50), primary_key=True)
    bname = Column(String(50))  
    author = Column(String(50)) 
@@ -27,4 +29,4 @@ class Book(db.Model):
       self.author = author
       self.year = year
    def __repr__(self):
-      return '<Book %r>' % (self.isbn)
+      return '<BOOK %r>' % (self.isbn)
