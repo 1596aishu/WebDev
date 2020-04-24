@@ -24,6 +24,7 @@ input[type=text]:focus {
     background-color: #ddd;
     outline: none;
   }
+
 .registerbtn {
     background-color: rgb(167, 66, 19);
     color: white;
@@ -32,7 +33,7 @@ input[type=text]:focus {
     border: none;
     cursor: pointer;
     position: fixed;
-    bottom: 10px;
+    top: 10px;
     right: 10px;
     width: 15%;
     opacity: 0.9;
@@ -60,6 +61,7 @@ input[type=text]:focus {
     border: none;
     text-align: center;
 }
+
 </style>
 <body style="text-align: center;">
 </br>
@@ -67,11 +69,11 @@ input[type=text]:focus {
 <form action="{{url_for('search')}}" method="POST">
     <div class="container">
         <h1>HOME PAGE</h1> 
+        <button type="submit" class ="registerbtn" name ="logout" style = "float:inline-end" formaction="{{url_for('logout')}}"> LOGOUT</button>       
         <hr>
         <h5>{{headline}}</h5>
         <h1>WELCOME TO YOUR HOMEPAGE</h1>
-    </br>
-        
+    </br>       
         <label for="choice"><h3>Choose a search type:</h3></label>
         <select class ="choice" id="choice" name="choice">
         <option class ="choice" value="isbn" style="font-size: larger;">isbn</option>
@@ -81,8 +83,8 @@ input[type=text]:focus {
         <input type="text" name = "searchbox" placeholder="Search" aria-label="Search">
     </br>
         <button type="submit" class ="searchbtn" name ="search" formaction="{{url_for('search')}}"> SEARCH</button></br></br>
-        <button type="submit" class ="registerbtn" name ="logout" style = "float:inline-end" formaction="{{url_for('logout')}}"> LOGOUT</button>       
     </div>
+    
 
 </form>
 </body>

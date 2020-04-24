@@ -32,3 +32,18 @@ class BOOK(Base):
    def __repr__(self):
       return '<BOOK %r>' % (self.isbn)
 
+
+# class RATING(Base):
+#    __tablename__ = 'rating'
+#    isbn = Column(String(50), foreign_key=True)
+#    username = Column(String(50), foreign_key=True)
+#    rating = Column(String(50))
+#    review = Column(String(200))
+#    def __init__(self, isbn, username, rating, review):
+#       self.isbn = isbn
+#       self.username = username
+#       self.rating = rating
+#       self.review = review
+#    def __repr__(self):
+#       return '<RATING %r>' % (self.username)
+
