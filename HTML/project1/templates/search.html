@@ -8,28 +8,33 @@
 body {
     font: Helvetica, sans-serif;
     color: rgb(233, 220, 220);
-    background-color: #333;
+    /* background-color: #333; */
+    text-align: center;
+    background-color: rgb(47, 49, 49);
   }
-input[type=text], input[type=password] {
-    width: 80%;
+input[type=text]{
+    width: 50%;
     padding: 15px;
     margin: 5px 0 22px 0;
     display: inline-block;
     border: none;
     background: #f1f1f1;
   }
-input[type=text]:focus, input[type=password]:focus {
+input[type=text]:focus {
     background-color: #ddd;
     outline: none;
   }
 .registerbtn {
-    background-color: #4CAF50;
+    background-color: rgb(167, 66, 19);
     color: white;
     padding: 16px 20px;
     margin: 8px 10px;
     border: none;
     cursor: pointer;
-    width: 25%;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 15%;
     opacity: 0.9;
     align-content: center;
   }  
@@ -37,7 +42,7 @@ input[type=text]:focus, input[type=password]:focus {
     opacity: 1;
   }
 .searchbtn {
-    background-color: #4CAF50;
+    background-color: rgb(167, 66, 19);
     color: white;
     padding: 16px 20px;
     margin: 8px 10px;
@@ -50,14 +55,15 @@ input[type=text]:focus, input[type=password]:focus {
     opacity: 1;
   }
 .choice{
-    padding: 16px 20px;
-    margin: 8px 10px;
+    padding: 14px 20px;
+    margin: 8px 8px;
     border: none;
     text-align: center;
 }
 </style>
-<body>
+<body style="text-align: center;">
 </br>
+<nav class="navbar navbar-light bg-light justify-content-between mystyle"></nav>
 <form action="{{url_for('search')}}" method="POST">
     <div class="container">
         <h1>HOME PAGE</h1> 
@@ -65,19 +71,19 @@ input[type=text]:focus, input[type=password]:focus {
         <h5>{{headline}}</h5>
         <h1>WELCOME TO YOUR HOMEPAGE</h1>
     </br>
-        <input type="text" name = "searchbox">
-</br> 
-        <label for="choice"><h1>Choose a search type:</h1></label>
-
+        
+        <label for="choice"><h3>Choose a search type:</h3></label>
         <select class ="choice" id="choice" name="choice">
-        <option class ="choice" value="isbn">isbn</option>
+        <option class ="choice" value="isbn" style="font-size: larger;">isbn</option>
         <option class ="choice" value="bname">Book Name</option>
         <option class ="choice" value="author">Author</option>
         </select>
+        <input type="text" name = "searchbox" placeholder="Search" aria-label="Search">
     </br>
         <button type="submit" class ="searchbtn" name ="search" formaction="{{url_for('search')}}"> SEARCH</button></br></br>
-        <center><button type="submit" class ="registerbtn" name ="logout" formaction="{{url_for('logout')}}"> LOGOUT</button> </center>       
+        <button type="submit" class ="registerbtn" name ="logout" style = "float:inline-end" formaction="{{url_for('logout')}}"> LOGOUT</button>       
     </div>
+
 </form>
 </body>
 </html>

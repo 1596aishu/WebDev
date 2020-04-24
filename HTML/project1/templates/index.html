@@ -1,52 +1,68 @@
-
-<!DOCTYPE html>
 <html>
-<head>
-</head>
-<style>
-    
-body {
-    font: Helvetica, sans-serif;
-    color: rgb(233, 220, 220);
-    background-color: #333;
-  }
-input[type=text], input[type=password] {
-    width: 50%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-  }
-input[type=text]:focus, input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-  }
-.registerbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px 20px;
-    margin: 8px 10px;
-    border: none;
-    cursor: pointer;
-    width: 25%;
-    opacity: 0.9;
-  }  
-.registerbtn:hover {
-    opacity: 1;
-  }
-</style>
-<body>
-</br>
-<form action="{{url_for('logout')}}" method="POST">
-    <div class="container">
-        <h1>HOME PAGE</h1> 
-        <hr>
-        <h5>{{headline}}</h5>
-        <h1>WELCOME TO YOUR HOMEPAGE</h1>
-    </br>
-        <button type="submit" class ="registerbtn" name ="logout"> LOGOUT</button>        
-    </div>
-</form>
-</body>
+    <head>
+        <title>{{ user }} home page</title>
+        <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='userhome-style.css') }}"/> -->
+        <style>
+            body {
+                background-color: orange;
+            }
+                h1 {
+                    color:black;
+                    text-align:center;
+                }
+
+           .button {
+            background-color : palegreen;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            border-color: palegreen;
+            position: fixed;
+            bottom: -20px;
+            right: 10px;
+            margin:30px;
+                    }     
+              .button:hover{
+                  background-color: blueviolet;
+              }       
+
+              a.navbar-brand {
+                  background-color: yellowgreen;
+
+              }
+              
+              .btn {
+                  width:100px;
+
+              }
+              input[type=search]{
+                  width:70%;
+                  background-color: pink;
+                  outline-width: inherit;
+                  column-width: auto;
+              }
+              .form-control{
+                  width:170px;
+              }
+              
+    </style>
+    </head>
+    <body style="text-align: center;">
+        <nav class="navbar navbar-light bg-light justify-content-between mystyle">
+            
+            <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            
+            <button formaction = "/search" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            
+        </nav>
+        <br><br>
+        <h1>Welcom To Goodreads!!</h1>
+        <br><br><br>
+
+        <div class="button">
+            <button formaction = "/logout" type="submit" class="btn btn-primary" style = "float:inline-end">Logout</button>
+        </div>
+    </form>
+    </body>
 </html>

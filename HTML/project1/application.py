@@ -63,10 +63,8 @@ def response():
         #     return render_template("registration.html", headline=username+" Registered already. Login.")
         info = USER(username=username,password=password,timestamp=calendar.timegm(time.gmtime()))
         try:
-
             db.add(info)
             db.commit()
-
             username += " registered. Please login."
             return render_template("registration.html",headline=username)
         except:
@@ -80,23 +78,32 @@ def response():
 
 @app.route("/search", methods=["GET","POST"])
 def search():
+    
     if request.method == "POST":
         word = request.form['searchbox']
         choice = request.form['choice']
         if choice == "isbn":
             # query = Book.query.filter(Book.isbn == word)
             # result = Book(isbn = )
-            query = BOOK.query.filter(BOOK.isbn.like('%word%'))
+            query = BOOK.query.filter(BOOK.isbn.like(f'%{word}%'))
         elif choice == "bname":
             # query = Book.query.filter(Book.bname == word)
-            query = BOOK.query.filter(BOOK.bname.like('%word%'))
+            query = BOOK.query.filter(BOOK.bname.like(f'%{word}%'))
         else:
             # query = Book.query.filter(Book.author == word)
-            query = BOOK.query.filter(BOOK.author.like('%word%'))
+            query = BOOK.query.filter(BOOK.author.like(f'%{word}%'))
         # result = db.session.execute(query)
+        isbn = []
+        bname = []
+        author = []
+        year = []
         for row in query:
-            strs += "isbn: "+ row.isbn+ " book name: "+ row.bname+ " Author: "+ row.author
-        return strs
+            isbn.append(row.isbn)
+            bname.append(row.bname)
+            author.append(row.author)
+            year.append(row.year)
+            # strs += "isbn: "+ row.isbn+ " book name: "+ row.bname+ " Author: "+ row.author+ " Year: "+ row.year
+        return render_template("results.html", isbn=isbn,bname=bname,author=author,year=year,length=len(isbn))
         
     elif request.method == "GET":
         return render_template("registration.html",headline="")
@@ -107,7 +114,7 @@ def authentication():
         username = request.form['username']
         password = request.form['password']
 
-        query = db.query(USER).filter_by(username=username)
+        query = db.query(USER).filter_by(username=username, password=password).first()
         if query is None:
             return render_template("registration.html", headline="WRONG CREDENTIALS")
         # query = USER.query.filter(USER.username.in_([username]), USER.password.in_([password]))
@@ -138,6 +145,5 @@ def database():
 @app.route("/logout", methods=["GET","POST"])
 def logout():
     session.clear()
-
     return redirect("/")
 
