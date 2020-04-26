@@ -109,15 +109,14 @@
             </div>
         <hr>
         </div>
+    {% for i in range(0, length) %}
+<center><h3>ISBN: {{ isbn[i] }}</h3>
+    <h3>Book Name: {{ bname[i] }}</h3>
+    <h3>Author: {{ author[i] }}</h3>
+    <h3>Year: {{ year[i] }}</h3></center>
+    {% endfor %}
         {% for i in range(0, length) %}
-    <center><h3>ISBN: {{ isbn[i] }}</h3>
-        <h3>Book Name: {{ bname[i] }}</h3>
-        <h3>Author: {{ author[i] }}</h3>
-        <h3>Year: {{ year[i] }}</h3></center>
-        {% endfor %}
-        <!-- {% for i in range(0, length) %}
-        <form action="{{url_for('rating',values=isbn[i])}}" method="POST">
-            <h3>headline</h3>
+        <form action="{{url_for('review',values=isbn[i])}}" method="POST">
             <div class="stars">
                 <label for="choice"><h3>Choose a rating: </h3></label>
                 <select class ="choice" id="choice" name="choice">
@@ -126,16 +125,15 @@
                 <option class ="choice" value="3">3-Star</option>
                 <option class ="choice" value="4">4-Star</option>
                 <option class ="choice" value="5">5-Star</option>
-              </div>
+            </div>
             <label for = "review">Write review: </label>
             <textarea name = "message" rows="20" cols="60"></textarea>
             </br></br>
-            {% endfor %} -->
+        {% endfor %}
         {% for i in range(0, length) %}
-        <form action="{{url_for('rating',values=isbn[i])}}" method="POST">
-            <button type="submit" class ="searchbtn" name ="submit">WRITE REVIEW</button>
+        <form action="{{url_for('review',values=isbn[i])}}" method="POST">
+            <center><button type="submit" class ="searchbtn" name ="submit">WRITE REVIEW</button></center>
         </form>
         {% endfor %}
-    </form>
-    </body>
+</body>
 </html>

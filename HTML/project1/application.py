@@ -8,7 +8,7 @@ from sqlalchemy import create_engine, or_
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 import models
-from models import BOOK, USER, Base
+from models import BOOK, USER, Base, RATING
 
 app = Flask(__name__)
 
@@ -94,6 +94,58 @@ def bookpage():
         year.append(row.year)
     return render_template("bookpage.html", isbn=isbn,bname=bname,author=author,year=year,length=len(isbn))
 
+
+@app.route("/rating", methods=["GET","POST"])
+def rating():     
+    # review = request.form['message']
+    # rating = request.form['choice']
+    username = session["username"]
+    result = request.args.get('values')
+    # return review
+    query = db.query(RATING).filter_by(isbn=result, username=username).first()
+    session["isbn"]=result
+    # query = RATING.query.filter(RATING.isbn.like(f'%{result}%'),RATING.username.like(f'%{session["username"]}%'))
+    if query is not None:
+        select = RATING.query.filter(RATING.isbn.like(f'%{result}%'),RATING.username.like(f'%{session["username"]}%'))
+        isbn = []
+        username = []
+        rating = []
+        review = []
+        for row in select:
+            isbn.append(row.isbn)
+            username.append(row.username)
+            rating.append(row.rating)
+            review.append(row.review)
+        return render_template("review.html", isbn=isbn,username=username,rating=rating,review=review,length=len(isbn))
+    else:
+        query = BOOK.query.filter(BOOK.isbn.like(f'%{result}%'))
+        isbn = []
+        bname = []
+        author = []
+        year = []
+        for row in query:
+            isbn.append(row.isbn)
+            bname.append(row.bname)
+            author.append(row.author)
+            year.append(row.year)
+        return render_template("rating.html", isbn=isbn,bname=bname,author=author,year=year,length=len(isbn))
+
+        
+        
+@app.route("/review", methods=["GET","POST"])
+def review():
+    review = request.form['message']
+    rating = request.form['choice']
+    username = session["username"]
+    result = request.args.get('values')
+    # return result      
+    info = RATING(isbn=result,username=username,rating=rating,review=review)
+    db.add(info)
+    db.commit()
+    headline="Successfully added your review"
+    return render_template("search.html", headline = headline)
+        
+
 @app.route("/auth", methods=["GET","POST"])
 def authentication():
     if request.method == "POST":
@@ -130,4 +182,5 @@ def database():
 def logout():
     session.clear()
     return redirect("/")
+
 
