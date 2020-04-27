@@ -52,7 +52,6 @@ def response():
         return render_template("registration.html",headline="")
 
 
-
 @app.route("/search", methods=["GET","POST"])
 def search():    
     if request.method == "POST":
@@ -128,9 +127,7 @@ def rating():
             bname.append(row.bname)
             author.append(row.author)
             year.append(row.year)
-        return render_template("rating.html", isbn=isbn,bname=bname,author=author,year=year,length=len(isbn))
-
-        
+        return render_template("rating.html", isbn=isbn,bname=bname,author=author,year=year,length=len(isbn))       
         
 @app.route("/review", methods=["GET","POST"])
 def review():
@@ -175,7 +172,6 @@ def database():
         password.append(i.password)
         stamps.append(time.ctime(i.timestamp))
     return render_template("database.html", username=username,password=password,stamps=stamps,length=len(username))
-
 
 
 @app.route("/logout", methods=["GET","POST"])
