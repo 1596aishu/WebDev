@@ -8,7 +8,9 @@
             function rules() {
                 let id = document.querySelector('#username').value;
                 let psd = document.querySelector('#password').value;
-                var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+                var eR = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+                var pR = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})$/;
+                var passw=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
                 if(id.length === 0 || psd.length === 0) {
                     document.querySelector('h6').innerHTML = 'Please fill all the fields';
                     event.preventDefault();
@@ -19,7 +21,7 @@
                     event.preventDefault();
                     return false;
                 }
-                else if(psd.match(mediumRegex) === null) {
+                else if(psd.match(passw) === null) {
                     document.querySelector('h6').innerHTML = 'Password must contain a minimum of 8 characters including a lowercase,uppercase and special characters';
                     event.preventDefault();
                     return false;

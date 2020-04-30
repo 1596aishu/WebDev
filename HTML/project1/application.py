@@ -46,7 +46,7 @@ def response():
             username += " registered. Please login."
             return render_template("registration.html",headline=username)
         except:
-            text ="Account already exists!please try again with new account or login"
+            text ="Account already exists! Please login"
             return render_template("registration.html",headline=text)
 
     elif request.method == "GET":
