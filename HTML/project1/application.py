@@ -2,11 +2,12 @@ import os, sys, logging, time
 import calendar
 import time
 from flask_login import LoginManager, login_user , logout_user , current_user , login_required
-from flask import Flask, render_template, request, session, redirect, url_for
+from flask import Flask, render_template, request, session, redirect, url_for, jsonify
 from flask_session import Session
 from sqlalchemy import create_engine, or_
 from sqlalchemy.orm import scoped_session, sessionmaker
-
+from flask_marshmallow import Marshmallow
+# from flask import Flask, request, jsonify
 import models
 from models import BOOK, USER, Base, RATING
 
@@ -52,7 +53,6 @@ def response():
         return render_template("registration.html",headline="")
 
 
-
 @app.route("/search", methods=["GET","POST"])
 def search():    
     if request.method == "POST":
@@ -88,6 +88,7 @@ def bookpage():
     author = []
     year = []
     for row in query:
+        
         isbn.append(row.isbn)
         bname.append(row.bname)
         author.append(row.author)
@@ -102,21 +103,24 @@ def rating():
     username = session["username"]
     result = request.args.get('values')
     # return review
-    query = db.query(RATING).filter_by(isbn=result, username=username).first()
+    query = db.query(RATING).filter_by(isbn=result, username=username)
     session["isbn"]=result
     # query = RATING.query.filter(RATING.isbn.like(f'%{result}%'),RATING.username.like(f'%{session["username"]}%'))
     if query is not None:
-        select = RATING.query.filter(RATING.isbn.like(f'%{result}%'),RATING.username.like(f'%{session["username"]}%'))
+        sel = db.query(RATING).filter_by(isbn=result).all()
+        # return render_template("search.html",headline=select)
+        # select = db.query(RATING).filter_by(isbn=result)
         isbn = []
         username = []
         rating = []
         review = []
-        for row in select:
+        for row in sel:
             isbn.append(row.isbn)
             username.append(row.username)
             rating.append(row.rating)
             review.append(row.review)
-        return render_template("review.html", isbn=isbn,username=username,rating=rating,review=review,length=len(isbn))
+        # return username[0]
+        return render_template("review.html", isbn=isbn,username=username,rating=rating,review=review,length=len(username))
     else:
         query = BOOK.query.filter(BOOK.isbn.like(f'%{result}%'))
         isbn = []
@@ -128,9 +132,7 @@ def rating():
             bname.append(row.bname)
             author.append(row.author)
             year.append(row.year)
-        return render_template("rating.html", isbn=isbn,bname=bname,author=author,year=year,length=len(isbn))
-
-        
+        return render_template("rating.html", isbn=isbn,bname=bname,author=author,year=year,length=len(isbn))       
         
 @app.route("/review", methods=["GET","POST"])
 def review():
@@ -175,7 +177,6 @@ def database():
         password.append(i.password)
         stamps.append(time.ctime(i.timestamp))
     return render_template("database.html", username=username,password=password,stamps=stamps,length=len(username))
-
 
 
 @app.route("/logout", methods=["GET","POST"])

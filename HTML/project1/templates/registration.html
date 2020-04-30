@@ -1,61 +1,86 @@
 
+
 <!DOCTYPE html>
 <html>
-<head>
-</head>
-<style>
-    
-body {
-    font: Helvetica, sans-serif;
-    color: rgb(238, 228, 228);
-    /* background-color: #333; */
-    background-color: rgb(46, 42, 41);
-    text-align: center;
-  }
-input[type=text], input[type=password] {
-    width: 50%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-  }
-input[type=text]:focus, input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-  }
-.registerbtn {
-    background-color: rgb(167, 66, 19);
-    color: white;
-    padding: 16px 20px;
-    margin: 8px 10px;
-    border:#f1f1f1;
-    cursor: pointer;
-    width: 25%;
-    opacity: 0.9;
-  }
-  
-.registerbtn:hover {
-    opacity: 1;
-  }
-</style>
-<body>
-</br>
-<form action="{{url_for('response')}}" method="POST">
-    <div class="container">
-        <h1>REGISTRATION PAGE</h1> 
-        <hr>
-        <h5>{{headline}}</h5></br></br>
-        <label for="username"><h2>USERNAME:</h2></label>
-        <input type="text" name="username" placeholder="Your username.." required>
-    </br>
-        <label for="password"><h2>PASSWORD:</h2></label>
-        <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" -->
-        <input type="password" name="password" placeholder="Your password.." minlength = "8" required>
-    </br>
-        <button type="submit" class ="registerbtn" name ="register"> Register</button>
-        <button type="submit" class ="registerbtn" name ="login" formaction="{{url_for('authentication')}}"> Login</button>
-    </div>
-</form>
-</body>
+    <head>
+        <title>My Webpage</title>
+        <script>
+            function rules() {
+                let id = document.querySelector('#username').value;
+                let psd = document.querySelector('#password').value;
+                var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+                if(id.length === 0 || psd.length === 0) {
+                    document.querySelector('h6').innerHTML = 'Please fill all the fields';
+                    event.preventDefault();
+                    return false;
+                }
+                else if(id.match(eR) === null) {
+                    document.querySelector('h6').innerHTML = 'Enter a valid email address';
+                    event.preventDefault();
+                    return false;
+                }
+                else if(psd.match(mediumRegex) === null) {
+                    document.querySelector('h6').innerHTML = 'Password must contain a minimum of 8 characters including a lowercase,uppercase and special characters';
+                    event.preventDefault();
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+        </script>
+    </head>
+    <style>    
+      body {
+          font: Helvetica, sans-serif;
+          color: rgb(238, 228, 228);
+          /* background-color: #333; */
+          background-color: rgb(46, 42, 41);
+          text-align: center;
+        }
+      input[type=text], input[type=password] {
+          width: 50%;
+          padding: 15px;
+          margin: 5px 0 22px 0;
+          display: inline-block;
+          border: none;
+          background: #f1f1f1;
+        }
+      input[type=text]:focus, input[type=password]:focus {
+          background-color: #ddd;
+          outline: none;
+        }
+      .registerbtn {
+          background-color: rgb(167, 66, 19);
+          color: white;
+          padding: 16px 20px;
+          margin: 8px 10px;
+          border:#f1f1f1;
+          cursor: pointer;
+          width: 25%;
+          opacity: 0.9;
+        }
+        
+      .registerbtn:hover {
+          opacity: 1;
+        }
+    </style>
+    <body>
+        <h1>Register</h1>
+        <h6>{{ headline }}</h6>
+        <div class="container">
+            <form method="post">
+                <!-- <div class="form-group"> -->
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter email" name="username">
+                <!-- </div> -->
+                <!-- <div class="form-group"> --></br>
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+                <!-- </div> --></br>
+                <button type="submit" onclick = "rules()"  class="registerbtn" formaction="{{ url_for('response') }}">Register</button>
+                <button type="submit" onclick = "rules()" class="registerbtn" formaction="{{ url_for('authentication') }}">Login</button>
+            </form>
+        </div>
+    </body>
 </html>
