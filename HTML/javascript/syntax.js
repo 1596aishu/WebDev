@@ -1,3 +1,4 @@
+
 // Bean counting
 
 // You can get the Nth character, or letter, from a string by writing "string"[N]. 
@@ -35,5 +36,4 @@ function countChar(name, letter){
     }
     console.log(c)
 }
-
 countChar(name, letter)
